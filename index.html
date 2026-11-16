@@ -1,4 +1,13 @@
-<meta charset="utf-8">        https://script.google.com/macros/s/AKfycbxEBd3PFXcEG1Qnc6oZL0_LfLwORn8zkX9s4yDu2VG0Uv8a0ijMElGB1V1YDOiejbXRRw/exec
+        <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별자리의 우주 공간 ✨</title>
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
         /* Base Variables & Theme */
         :root {
             --bg-gradient-dark: linear-gradient(135deg, #0b0d19 0%, #171b36 50%, #0d122b 100%);
@@ -103,21 +112,22 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             color: var(--text-main);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
+            padding: 0.55rem 1rem;
+            border-radius: 50px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
             box-shadow: var(--shadow);
             transition: var(--transition);
             backdrop-filter: blur(10px);
         }
 
         .theme-btn:hover {
-            transform: scale(1.1) rotate(15deg);
+            transform: scale(1.05);
         }
 
         /* Hero Intro Section */
@@ -158,6 +168,71 @@
             color: var(--text-sub);
             word-break: keep-all;
             line-height: 1.6;
+        }
+
+        /* Visitor Welcome Box */
+        .welcome-box {
+            margin-top: 1.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--card-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .welcome-input-group {
+            display: flex;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .welcome-input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        body[data-theme="light"] .welcome-input {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .welcome-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(77, 238, 234, 0.25);
+        }
+
+        .welcome-btn {
+            padding: 0.7rem 1.2rem;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-glow));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .welcome-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 4px 15px rgba(138, 116, 249, 0.4);
+        }
+
+        .welcome-greeting {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent-pink);
+            min-height: 1.5em;
+            animation: fadeIn 0.4s ease;
         }
 
         /* Titles */
@@ -236,8 +311,14 @@
 
         .card-back {
             transform: rotateY(180deg);
-            background: linear-gradient(135deg, rgba(138, 116, 249, 0.2), rgba(11, 13, 25, 0.95));
+            background: linear-gradient(135deg, rgba(138, 116, 249, 0.25), rgba(11, 13, 25, 0.95));
             border-color: var(--accent-glow);
+            color: #f8fafc;
+        }
+
+        body[data-theme="light"] .card-back {
+            background: linear-gradient(135deg, rgba(138, 116, 249, 0.9), rgba(99, 102, 241, 0.95));
+            color: #ffffff;
         }
 
         .card-back h4 {
@@ -328,6 +409,16 @@
             animation: shake 0.5s ease-in-out;
         }
 
+        /* Celebrate pulse effect for right answer */
+        @keyframes celebratePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(74, 222, 128, 0.5); }
+            100% { transform: scale(1); }
+        }
+        .celebrate {
+            animation: celebratePulse 0.6s ease-in-out;
+        }
+
         /* Fortune Wheel/Button Section */
         .fortune-card {
             background: var(--card-bg);
@@ -381,6 +472,10 @@
             transition: all 0.3s ease;
         }
 
+        body[data-theme="light"] .fortune-display {
+            background: rgba(99, 102, 241, 0.06);
+        }
+
         .fortune-display.active {
             border-style: solid;
             border-color: var(--accent-cyan);
@@ -389,7 +484,7 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -429,66 +524,76 @@
                 <span>별자리의 우주 공간</span>
             </div>
             <button class="theme-btn" id="theme-toggle" aria-label="테마 전환">
-                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-sun" style="color: #fbbf24;"></i>
+                <span id="theme-label">밝은 화면</span>
             </button>
         </header>
 
         <!-- Hero Intro Section -->
         <section class="hero">
-            <span class="nickname-badge">✨ 닉네임: 별자리</span>
+            <span class="nickname-badge">✨ 내 별명: 별자리</span>
             <h1 id="hero-title">반짝이는 별빛 속으로<br>놀러오신 것을 환영해요!</h1>
             <p>
                 끝없는 우주처럼 무한한 가능성을 꿈꾸는 탐험가 '별자리'의 공간입니다 🌠
             </p>
+
+            <!-- Visitor Name Input & Greeting Box -->
+            <div class="welcome-box">
+                <div class="welcome-input-group">
+                    <input type="text" id="visitor-name" class="welcome-input" placeholder="이름이나 닉네임을 입력해 주세요!" maxlength="15">
+                    <button class="welcome-btn" onclick="greetVisitor()">인사하기</button>
+                </div>
+                <div class="welcome-greeting" id="welcome-greeting"></div>
+            </div>
         </section>
 
         <!-- Flip Cards Section -->
         <section>
             <h2 class="section-title"><i class="fa-solid fa-sparkles" style="color: var(--accent-cyan);"></i> 내가 좋아하는 것 3가지</h2>
-            <p style="color: var(--text-sub); margin-bottom: 1rem; font-size: 0.95rem;">👇 카드를 클릭하거나 터치하여 뒷면의 이유를 확인해 보세요!</p>
+            <p style="color: var(--text-sub); margin-bottom: 1rem; font-size: 0.95rem;">👇 카드를 누르면 뒤집히면서 좋아하는 이유가 나와요!</p>
             
             <div class="cards-grid">
-                <!-- Card 1 -->
+                <!-- Card 1: 휴식 -->
                 <div class="flip-card" onclick="flipCard(this)">
                     <div class="flip-card-inner">
                         <div class="card-front">
                             <i class="fa-solid fa-bed"></i>
                             <h3>휴식 🛌</h3>
-                            <p>터치해서 이유 보기</p>
+                            <p>눌러서 이유 보기</p>
                         </div>
                         <div class="card-back">
-                            <h4>왜 좋아할까요?</h4>
-                            <p>우주선도 충전이 필요한 법! 푹 쉬어야 뇌 용량이 리셋되어서 더 강력하게 우주를 탐험할 수 있기 때문입니다 🔋</p>
+                            <h4>휴식이 좋은 이유!</h4>
+                            <p>우주선도 연료 충전이 필수! 이불 속에서 뒹굴거리며 에너지를 풀충전해야 다음 은하계로 날아갈 수 있기 때문이죠 🔋💤</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Card 2: 활동적인 것 -->
                 <div class="flip-card" onclick="flipCard(this)">
                     <div class="flip-card-inner">
                         <div class="card-front">
                             <i class="fa-solid fa-bolt"></i>
                             <h3>활동적인 것 ⚡</h3>
-                            <p>터치해서 이유 보기</p>
+                            <p>눌러서 이유 보기</p>
                         </div>
                         <div class="card-back">
-                            <h4>왜 좋아할까요?</h4>
-                            <p>가만히 있으면 몸에 러스티(녹)가 슬어요! 땀 흘리고 씩씩하게 움직일 때 별빛처럼 에너지가 터져나옵니다 🏃‍♂️✨</p>
+                            <h4>활동적인 게 좋은 이유!</h4>
+                            <p>가만히만 있으면 우주 먼지가 쌓여요! 신나게 뛰어놀고 땀 흘릴 때 심장이 별빛처럼 반짝반짝 뛰는 기분이 최고거든요 🏃‍♂️✨</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Card 3: 다양한 것 -->
                 <div class="flip-card" onclick="flipCard(this)">
                     <div class="flip-card-inner">
                         <div class="card-front">
                             <i class="fa-solid fa-shapes"></i>
                             <h3>다양한 것 🎨</h3>
-                            <p>터치해서 이유 보기</p>
+                            <p>눌러서 이유 보기</p>
                         </div>
                         <div class="card-back">
-                            <h4>왜 좋아할까요?</h4>
-                            <p>매일 똑같은 건 심심해! 우주에 수천억 개의 별이 있듯, 새로운 경험과 다채로운 재미를 수집하는 취미가 있습니다 🌌</p>
+                            <h4>다양한 게 좋은 이유!</h4>
+                            <p>밤하늘에 똑같은 별이 하나도 없듯, 새로운 취미와 다채로운 경험을 하나씩 수집하는 게 세상에서 제일 재밌답니다 🌌🎁</p>
                         </div>
                     </div>
                 </div>
@@ -500,7 +605,7 @@
             <h2 class="section-title"><i class="fa-solid fa-gamepad" style="color: var(--accent-pink);"></i> 깜짝 OX 퀴즈!</h2>
             <div class="quiz-card" id="quiz-card">
                 <p style="color: var(--text-sub); font-size: 0.95rem;">별자리에 대해 맞춰보세요</p>
-                <div class="quiz-question">"나는 18살이다!"</div>
+                <div class="quiz-question">"나는 18살이다"</div>
                 <div class="quiz-btns">
                     <button class="ox-btn o-btn" onclick="checkAnswer(true)">O</button>
                     <button class="ox-btn x-btn" onclick="checkAnswer(false)">X</button>
@@ -514,7 +619,7 @@
             <h2 class="section-title"><i class="fa-solid fa-crystal-ball" style="color: var(--accent-glow);"></i> 별자리의 오늘의 운세</h2>
             <div class="fortune-card">
                 <button class="fortune-btn" onclick="drawFortune()">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> 운세 뽑기 버튼 누르기
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> 오늘의 운세 뽑기
                 </button>
                 <div class="fortune-display" id="fortune-display">
                     버튼을 누르면 우주 기운이 담긴 오늘의 운세가 나타납니다! 🔮
@@ -522,107 +627,11 @@
             </div>
         </section>
 
-        <!-- Constellation Showcase Section -->
-        <section>
-            <h2 class="section-title"><i class="fa-solid fa-star-and-crescent" style="color: var(--accent-cyan);"></i> 밤하늘을 수놓는 별자리들</h2>
-            <div class="constellation-showcase">
-                <div class="constellation-display" id="constellation-display">
-                    <div class="constellation-icon" id="const-icon"><i class="fa-solid fa-star"></i></div>
-                    <div class="constellation-name" id="const-name">별자리 탐색 중...</div>
-                    <div class="constellation-desc" id="const-desc">우주의 신비로운 별자리가 하나씩 떠오릅니다 ✨</div>
-                </div>
-                <div class="constellation-dots" id="const-dots"></div>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer>
-            <p>© 별자리(Constellation) - 모든 반짝이는 찰나를 응원합니다.</p>
+            <p>© 별자리(Constellation) - 모든 반짝이는 찰나를 응원합니다 ✨</p>
         </footer>
     </div>
-
-    <style>
-        /* Constellation Showcase Styles */
-        .constellation-showcase {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 2.2rem 1.5rem 1.8rem 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .constellation-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 140px;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .constellation-display.fade-out {
-            opacity: 0;
-            transform: translateY(-10px) scale(0.95);
-        }
-
-        .constellation-display.fade-in {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .constellation-icon {
-            font-size: 3rem;
-            margin-bottom: 0.8rem;
-            color: var(--accent-cyan);
-            filter: drop-shadow(0 0 12px rgba(77, 238, 234, 0.6));
-            animation: pulseGlow 2.5s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(77, 238, 234, 0.4)); }
-            100% { transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8)); }
-        }
-
-        .constellation-name {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 0.4rem;
-        }
-
-        .constellation-desc {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-            word-break: keep-all;
-        }
-
-        .constellation-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.2rem;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--text-sub);
-            opacity: 0.3;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            opacity: 1;
-            background: var(--accent-cyan);
-            box-shadow: 0 0 10px var(--accent-cyan);
-            transform: scale(1.3);
-        }
-    </style>
 
     <!-- JavaScript Script -->
     <script>
@@ -649,26 +658,34 @@
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 2 + 0.5;
+                this.size = Math.random() * 2.2 + 0.5;
                 this.alpha = Math.random();
                 this.speed = Math.random() * 0.02 + 0.005;
                 this.dir = Math.random() > 0.5 ? 1 : -1;
+                this.vy = -(Math.random() * 0.25 + 0.05); // 은은하게 떠다니는 움직임
             }
 
             update() {
+                this.y += this.vy;
+                if (this.y < 0) {
+                    this.y = height;
+                    this.x = Math.random() * width;
+                }
+
                 this.alpha += this.speed * this.dir;
                 if (this.alpha >= 1) {
                     this.alpha = 1;
                     this.dir = -1;
-                } else if (this.alpha <= 0.1) {
+                } else if (this.alpha <= 0.15) {
                     this.dir = 1;
-                    this.reset();
                 }
             }
 
             draw() {
                 const isLight = document.body.getAttribute('data-theme') === 'light';
-                ctx.fillStyle = isLight ? `rgba(99, 102, 241, ${this.alpha})` : `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.fillStyle = isLight 
+                    ? `rgba(99, 102, 241, ${this.alpha})` 
+                    : `rgba(255, 255, 255, ${this.alpha})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -678,70 +695,44 @@
         let stars = [];
         function initStars() {
             stars = [];
-            const count = Math.floor((width * height) / 3000);
+            const count = Math.floor((width * height) / 3500);
             for (let i = 0; i < count; i++) {
                 stars.push(new Star());
             }
         }
 
-        function animateStars() {
-            ctx.clearRect(0, 0, width, height);
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-            requestAnimationFrame(animateStars);
-        }
-
-        initStars();
-        animateStars();
-
-        /* -------------------------------------------------------------
-           2. Light / Dark Theme Toggle
-           ------------------------------------------------------------- */
-        const themeBtn = document.getElementById('theme-toggle');
-        themeBtn.addEventListener('click', () => {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.body.setAttribute('data-theme', newTheme);
-
-            themeBtn.innerHTML = newTheme === 'dark' 
-                ? '<i class="fa-solid fa-moon"></i>' 
-                : '<i class="fa-solid fa-sun" style="color: #f59e0b;"></i>';
-        });
-
-        /* -------------------------------------------------------------
-           3. Card Flip Mechanism
-           ------------------------------------------------------------- */
-        function flipCard(cardElement) {
-            cardElement.classList.toggle('flipped');
-        }
-
-        /* -------------------------------------------------------------
-           4. OX Quiz Logic + Celebration Canvas Particles
-           ------------------------------------------------------------- */
+        /* Celebration Particles */
         let particles = [];
         function createCelebration() {
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 60; i++) {
                 particles.push({
                     x: width / 2,
                     y: height / 2,
-                    vx: (Math.random() - 0.5) * 12,
-                    vy: (Math.random() - 0.5) * 12 - 3,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 0.5) * 14 - 4,
                     color: `hsl(${Math.random() * 360}, 90%, 65%)`,
-                    size: Math.random() * 6 + 4,
+                    size: Math.random() * 6 + 3,
                     life: 1
                 });
             }
         }
 
-        function drawParticles() {
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw floating stars
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+
+            // Draw celebration confetti particles if any
             for (let i = particles.length - 1; i >= 0; i--) {
                 const p = particles[i];
                 p.x += p.vx;
                 p.y += p.vy;
-                p.vy += 0.15; // gravity
-                p.life -= 0.02;
+                p.vy += 0.2;
+                p.life -= 0.018;
 
                 if (p.life <= 0) {
                     particles.splice(i, 1);
@@ -755,47 +746,98 @@
                 ctx.fill();
                 ctx.globalAlpha = 1;
             }
-            if (particles.length > 0) {
-                requestAnimationFrame(drawParticles);
-            }
+
+            requestAnimationFrame(animateCanvas);
         }
 
+        initStars();
+        animateCanvas();
+
+        /* -------------------------------------------------------------
+           2. Light / Dark Theme Toggle
+           ------------------------------------------------------------- */
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+
+            themeBtn.innerHTML = newTheme === 'dark' 
+                ? '<i class="fa-solid fa-sun" style="color: #fbbf24;"></i><span>밝은 화면</span>' 
+                : '<i class="fa-solid fa-moon" style="color: #6366f1;"></i><span>어두운 화면</span>';
+        });
+
+        /* -------------------------------------------------------------
+           3. Visitor Welcome Greeting
+           ------------------------------------------------------------- */
+        const visitorInput = document.getElementById('visitor-name');
+        visitorInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                greetVisitor();
+            }
+        });
+
+        function greetVisitor() {
+            const name = visitorInput.value.trim();
+            const greetingEl = document.getElementById('welcome-greeting');
+            
+            if (!name) {
+                greetingEl.style.color = '#fbbf24';
+                greetingEl.textContent = '✨ 이름을 먼저 적어주시면 반갑게 인사해 드릴게요!';
+                return;
+            }
+
+            greetingEl.style.color = 'var(--accent-pink)';
+            greetingEl.textContent = `🚀 반가워요, ${name}님! 별자리의 우주에 오신 걸 진심으로 환영합니다! ✨`;
+        }
+
+        /* -------------------------------------------------------------
+           4. Card Flip Mechanism
+           ------------------------------------------------------------- */
+        function flipCard(cardElement) {
+            cardElement.classList.toggle('flipped');
+        }
+
+        /* -------------------------------------------------------------
+           5. OX Quiz Logic
+           ------------------------------------------------------------- */
         function checkAnswer(userAnswer) {
             const resultDiv = document.getElementById('quiz-result');
             const quizCard = document.getElementById('quiz-card');
 
+            quizCard.classList.remove('shake', 'celebrate');
+            void quizCard.offsetWidth; // Trigger reflow
+
             if (userAnswer === true) {
-                // Correct!
+                // Correct (O)
                 resultDiv.style.color = "#4ade80";
-                resultDiv.innerHTML = "🎉 정답입니다! 18살 에너지가 뿜뿜! 축하합니다✨";
+                resultDiv.innerHTML = "🎉 정답입니다! 18살 에너지가 뿜뿜! 축하해요✨";
+                quizCard.classList.add('celebrate');
                 createCelebration();
-                drawParticles();
             } else {
-                // Wrong!
+                // Wrong (X)
                 resultDiv.style.color = "#f87171";
-                resultDiv.innerHTML = "😅 앗 아쉬워요! 저는 낭만 가득한 18살이 맞답니다!";
-                quizCard.classList.remove('shake');
-                void quizCard.offsetWidth; // Trigger reflow for animation restart
+                resultDiv.innerHTML = "😢 앗 아쉬워요! 정답은 O! 저는 빛나는 18살이랍니다!";
                 quizCard.classList.add('shake');
             }
         }
 
         /* -------------------------------------------------------------
-           5. Fortune Generator (12 Items)
+           6. Fortune Generator (12 Items)
            ------------------------------------------------------------- */
         const fortunes = [
-            "🌟 **대길**: 오늘 당신이 길 가다 쳐다본 별이 행운의 빔을 쏴줍니다!",
-            "☕ **소길**: 따뜻한 음료 한 잔과 함께 뜻밖의 힐링 소식을 듣게 됩니다.",
-            "🚀 **우주급 행운**: 망설이던 일이 있다면 오늘 도전해 보세요! 무조건 성공각!",
-            "🍬 **달콤한 하루**: 오늘 뜬금없이 누군가 당신에게 기분 좋은 칭찬을 해줍니다.",
-            "🎧 **감성 충전**: 오늘 문득 들은 노래가 인생 명곡으로 등극합니다.",
-            "💤 **꿀잠 보장**: 오늘은 베개에 머리만 대면 3초 만에 우주 유영을 떠납니다.",
-            "🍕 **맛있는 운세**: 오늘 먹는 음식이 평소보다 2배는 맛있게 느껴집니다!",
+            "🌟 **대길**: 오늘 길 가다 올려다본 하늘의 별이 당신에게 행운의 빔을 쏴줍니다!",
+            "☕ **소길**: 달콤한 간식이나 음료 한 잔과 함께 뜻밖의 기분 좋은 소식을 듣게 됩니다.",
+            "🚀 **우주급 행운**: 망설이던 일이 있다면 오늘 바로 도전해 보세요! 무조건 성공각!",
+            "🍬 **달콤한 하루**: 오늘 뜬금없이 누군가 당신에게 기분 좋은 칭찬을 건넵니다.",
+            "🎧 **감성 충전**: 오늘 우연히 들은 노래가 당신의 인생 명곡으로 등극합니다.",
+            "💤 **꿀잠 보장**: 오늘은 베개에 머리만 대면 3초 만에 포근한 우주 유영을 떠납니다.",
+            "🍕 **맛있는 운세**: 오늘 먹는 음식이 평소보다 2배는 더 맛있게 느껴집니다!",
             "💡 **아이디어 폭발**: 머릿속에서 반짝이는 기발한 생각이 샘솟는 하루가 됩니다.",
             "🍀 **소소한 행복**: 주머니 속이나 책상 위에서 잊고 있던 작은 행복을 발견해요.",
-            "✨ **별빛 가득**: 당신의 친절한 말 한마디가 주변 사람에게 큰 빛이 되는 날입니다.",
+            "✨ **별빛 가득**: 당신의 따뜻한 말 한마디가 주변 사람에게 큰 빛이 되는 날입니다.",
             "🎯 **집중력 만렙**: 오늘 하려고 마음먹은 일은 빛의 속도로 완벽하게 끝냅니다!",
-            "🌈 **무지개빛 텐션**: 하루 종일 웃을 일이 가득한 미소 만발의 날!"
+            "🌈 **무지개빛 텐션**: 하루 종일 웃을 일이 가득한 미소 만발의 하루가 됩니다!"
         ];
 
         let lastFortuneIndex = -1;
@@ -803,7 +845,6 @@
         function drawFortune() {
             const display = document.getElementById('fortune-display');
             
-            // Randomly select index distinct from previous
             let index;
             do {
                 index = Math.floor(Math.random() * fortunes.length);
@@ -819,72 +860,12 @@
                 display.style.opacity = 1;
             }, 150);
         }
-
-        /* -------------------------------------------------------------
-           6. Sequential Constellation Showcase
-           ------------------------------------------------------------- */
-        const constellationsList = [
-            { name: "오리온자리  Orion", icon: "fa-solid fa-user-ninja", desc: "겨울철 밤하늘을 대표하는 당당하고 용맹한 사냥꾼 별자리 🏹" },
-            { name: "카시오페아자리 Cassiopeia", icon: "fa-solid fa-crown", desc: "북쪽 하늘에서 아름다운 W 모양으로 반짝이는 여왕 별자리 👑" },
-            { name: "큰곰자리 (북두칠성) Ursa Major", icon: "fa-solid fa-bear-head", desc: "길 잃은 우주 여행자들에게 북극성 위치를 알려주는 지침서 🐻" },
-            { name: "페가수스자리 Pegasus", icon: "fa-solid fa-horse", desc: "가을 밤하늘을 자유롭게 누비는 날개 달린 천마 별자리 🐎✨" },
-            { name: "백조자리 Cygnus", icon: "fa-solid fa-dove", desc: "은하수 한가운데를 가로지르며 펼쳐진 거대한 십자가 별자리 🕊️" },
-            { name: "황소자리 Taurus", icon: "fa-solid fa-shield-halved", desc: "붉은 눈 붉은 별 알데바란을 품은 강인한 별자리 🐂" },
-            { name: "사자자리 Leo", icon: "fa-solid fa-cat", desc: "봄철 밤하늘의 왕! 웅장한 모습으로 빛나는 별자리 🦁" },
-            { name: "거문고자리 Lyra", icon: "fa-solid fa-music", desc: "여름철 밤하늘 최고의 직녀성(베가)을 품은 고운 별자리 🎵" }
-        ];
-
-        let currentConstIndex = 0;
-        const constDisplay = document.getElementById('constellation-display');
-        const constIcon = document.getElementById('const-icon');
-        const constName = document.getElementById('const-name');
-        const constDesc = document.getElementById('const-desc');
-        const constDotsContainer = document.getElementById('const-dots');
-
-        // Create indicator dots
-        constellationsList.forEach((_, idx) => {
-            const dot = document.createElement('div');
-            dot.className = `dot ${idx === 0 ? 'active' : ''}`;
-            constDotsContainer.appendChild(dot);
-        });
-
-        function showNextConstellation() {
-            constDisplay.classList.add('fade-out');
-            
-            setTimeout(() => {
-                currentConstIndex = (currentConstIndex + 1) % constellationsList.length;
-                const item = constellationsList[currentConstIndex];
-
-                constIcon.innerHTML = `<i class="${item.icon}"></i>`;
-                constName.textContent = item.name;
-                constDesc.textContent = item.desc;
-
-                // Update dots
-                const dots = constDotsContainer.querySelectorAll('.dot');
-                dots.forEach((dot, idx) => {
-                    dot.className = `dot ${idx === currentConstIndex ? 'active' : ''}`;
-                });
-
-                constDisplay.classList.remove('fade-out');
-                constDisplay.classList.add('fade-in');
-            }, 400);
-        }
-
-        // Initialize first constellation & set interval to switch every 3.5 seconds
-        if (constellationsList.length > 0) {
-            const item = constellationsList[0];
-            constIcon.innerHTML = `<i class="${item.icon}"></i>`;
-            constName.textContent = item.name;
-            constDesc.textContent = item.desc;
-            
-            setInterval(showNextConstellation, 3500);
-        }
     </script>
 <!-- ▼ 방명록·OX 투표 (4차시) ▼ -->
 <sb-widget id="sb-web" style="display:block;width:100%;max-width:640px;margin:32px auto;flex:1 1 100%;grid-column:1/-1;align-self:stretch;box-sizing:border-box"></sb-widget>
 <script>
 (function () {
-  var C = {"id":"sb-web","url":"https://script.google.com/macros/s/AKfycbxEBd3PFXcEG1Qnc6oZL0_LfLwORn8zkX9s4yDu2VG0Uv8a0ijMElGB1V1YDOiejbXRRw/exec","q":"집에 가고싶다","title":"방명록","sel":"","pos":"after"};
+  var C = {"id":"sb-web","url":"https://script.google.com/macros/s/AKfycbxEBd3PFXcEG1Qnc6oZL0_LfLwORn8zkX9s4yDu2VG0Uv8a0ijMElGB1V1YDOiejbXRRw/exec","q":"집에 가고싶다","title":"방명록","sel":"body > div:nth-child(2) > section:nth-child(2)","pos":"before"};
   var host = document.getElementById(C.id);
   if (!host || host.sbReady) return;
   host.sbReady = true;
